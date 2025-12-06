@@ -1,0 +1,82 @@
+<local:BaseWindow x:Class="Cheaters.MainWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:Cheaters.Windows"
+                  xmlns:core="clr-namespace:Cheaters.Core"
+                  mc:Ignorable="d" Background="{StaticResource 主背景色}"
+                  Title="修改器测试" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 窗口标题栏 -->
+        <local:WindowChrome></local:WindowChrome>
+        <Grid x:Name="MainGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="56" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Style="{StaticResource HEIButtonStyle}"
+                            Content="初始化" Click="StartUp_Clicked" Margin="5"
+                            VerticalAlignment="Top">
+                    </Button>
+
+                    <Button Style="{StaticResource HEIButtonStyle}"
+                            Content="复原所有" Click="RecoverAllTasks_Clicked" Margin="5"
+                            VerticalAlignment="Top">
+                    </Button>
+                    <Button Style="{StaticResource HEIButtonStyle}" Width="100"
+                            Content="搜索所有空闲" Click="TestButton4_Clicked" Margin="5"
+                            VerticalAlignment="Top">
+                    </Button>
+                    <Button Style="{StaticResource HEIButtonStyle}" Width="100"
+                            Content="释放所有空闲" Click="ReleaseAllAddress" Margin="5"
+                            VerticalAlignment="Top">
+                    </Button>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Style="{StaticResource HEIButtonStyle}"
+                            Content="执行功能1" Click="TestFirstTask_Clicked" Margin="5"
+                            VerticalAlignment="Top">
+                    </Button>
+                    
+                    <ComboBox x:Name="SelectedTask" Style="{StaticResource HEIComboBoxStyle}" Width="160"
+                              Margin="5" ItemsSource="{Binding AOBInfos}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Style="{StaticResource HEIButtonStyle}" Width="60"
+                            Content="执行" Click="ApplyTask_Clicked" Margin="5" 
+                            VerticalAlignment="Top">
+                    </Button>
+                    <Button Style="{StaticResource HEIButtonStyle}" Width="60"
+                            Content="复原" Click="RecoverTask_Clicked" Margin="5" 
+                            VerticalAlignment="Top">
+                    </Button>
+                </StackPanel>
+                <TextBox Style="{StaticResource HEITextBoxStyle}"
+                         x:Name="TextBox_Log" Margin="5" Height="200"
+                         VerticalScrollBarVisibility="Visible" Focusable="True"
+                         TextWrapping="Wrap" IsReadOnly="True">
+                </TextBox>
+
+
+            </StackPanel>
+            <Grid x:Name="AlertGrid" Grid.Row="1">
+            </Grid>
+        </Grid>
+
+
+        <!-- <StatusBar Style="{StaticResource HEIStatusBarStyle}"  Grid.Row="2" Margin="1"> -->
+        <!--     <Label x:Name="Label_Status" Foreground="WhiteSmoke" Padding="0" FontSize="12"  Content="修改器状态栏"></Label> -->
+        <!-- </StatusBar> -->
+    </Grid>
+</local:BaseWindow>
